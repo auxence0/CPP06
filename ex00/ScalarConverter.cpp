@@ -6,7 +6,7 @@
 /*   By: asauvage <asauvage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 14:03:25 by asauvage          #+#    #+#             */
-/*   Updated: 2026/09/09 15:20:03 by asauvage         ###   ########.fr       */
+/*   Updated: 2026/09/10 11:53:46 by asauvage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ bool	checkInt( const std::string& str ) {
 		i++;
 	while (isdigit(str[i]) && i < 11)
 		i++;
-	if (str.size() != i || ( INT_MIN > std::strtol(str.c_str(), NULL, 10) && std::strtol(str.c_str(), NULL, 10) > INT_MAX ))
+	long	val(std::strtol(str.c_str(), NULL, 10));
+	if (str.size() != i || INT_MIN > val || val > INT_MAX)
 		return false;
 	return true;
 }
@@ -68,16 +69,23 @@ bool	checkInt( const std::string& str ) {
 bool	checkFloat( const std::string& str ) {
 	int i(0);
 	int	p(0);
+	int	num(0);
 	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (isdigit(str[i]) || str[i] == '.') {
 		if (str[i] == '.')
 			p++;
+		else
+			num++;
 		i++;
 	}
-	if (str.size() != i + 1 || str[i] != 'f' || p != 1)
+	if (str.size() != i + 1 || ((str[0] ==  '-' || str[0] == '+') && !isdigit(str[1])) || !num || str[i] != 'f' || p != 1)
 		return false;
 	return true;
+}
+
+void	printFloat( float nb ) {
+	
 }
 
 void	ScalarConverter::convert( const std::string& str ) {
