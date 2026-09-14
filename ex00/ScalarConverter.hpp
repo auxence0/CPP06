@@ -6,7 +6,7 @@
 /*   By: asauvage <asauvage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 13:20:56 by asauvage          #+#    #+#             */
-/*   Updated: 2026/09/14 16:54:37 by asauvage         ###   ########.fr       */
+/*   Updated: 2026/09/14 17:17:56 by asauvage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <ctype.h>
 # include <math.h>
 # include <climits>
-# include <limits.h>
+# include <limits>
 # include <float.h>
 
 class	ScalarConverter {

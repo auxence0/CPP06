@@ -6,7 +6,7 @@
 /*   By: asauvage <asauvage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 14:03:25 by asauvage          #+#    #+#             */
-/*   Updated: 2026/09/14 17:14:51 by asauvage         ###   ########.fr       */
+/*   Updated: 2026/09/14 17:19:32 by asauvage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ bool	checkFloat( const std::string& str ) {
 		return false;
 	char	*endptr(NULL);
 	float	val(std::strtof(str.c_str(), &endptr));
+	(void)val;
 	if (*endptr != 'f' || *(endptr + 1) != '\0' || str.c_str() == endptr)
 		return false;
 	if (errno == ERANGE)
@@ -158,6 +159,7 @@ bool	checkDouble( const std::string& str ) {
 		return false;
 	char	*endptr(NULL);
 	double	val(std::strtod(str.c_str(), &endptr));
+	(void)val;
 	if (*endptr != '\0' || str.c_str() == endptr)
 		return false;
 	if (errno == ERANGE)
@@ -168,7 +170,7 @@ bool	checkDouble( const std::string& str ) {
 void	ScalarConverter::convert( const std::string& str ) {
 	if (str == "nan" || str == "nanf")
 		printNan();
-	else if (str == "-inff" || str == "+inff" || str == "-inf" || str == "+inf")
+	else if (str == "-inff" || str == "+inff" || str == "-inf" || str == "+inf" || str == "inf" || str == "inff")
 		printInf(str);
 	else if (str.size() == 1 && !std::isdigit(str[0]))
 		printChar(str[0]);
